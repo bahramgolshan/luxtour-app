@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+Route::get('/package/{id}', function () {
+    return view('packages.show');
 });
 
 Route::get('/payment/checkout', 'App\Http\Controllers\StripeController@checkout')->name('checkout');
