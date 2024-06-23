@@ -5,5 +5,5 @@
 @section('content')
     @include('sections.carousel-main')
     @include('sections.booking-form')
-    @include('sections.package-single')
+    @include('sections.tour-single')
 @endsection

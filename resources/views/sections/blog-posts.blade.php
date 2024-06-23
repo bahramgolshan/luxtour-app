@@ -1,5 +1,5 @@
 <!-- Blog Start -->
-<section id="blog-posts">
+<section id="blogPosts">
     <div class="container-fluid py-5">
         <div class="container pt-5 pb-3">
             <div class="text-center mb-3 pb-3">

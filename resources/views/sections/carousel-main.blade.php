@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="{{ asset('assets/images/hero/carousel-2.jpg') }}" alt="Image" />
+                    <img class="img-cover" src="{{ asset('assets/images/hero/carousel-2.jpg') }}" alt="Image" />
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px">
                             <h4 class="text-white text-uppercase mb-md-3">

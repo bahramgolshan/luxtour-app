@@ -14,17 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('/package/{id}', function () {
-    return view('packages.show');
-});
-
-Route::get('/payment/checkout', 'App\Http\Controllers\StripeController@checkout')->name('checkout');
-Route::post('/payment/test', 'App\Http\Controllers\StripeController@test');
-Route::post('/payment/live', 'App\Http\Controllers\StripeController@live');
-Route::get('/payment/success', 'App\Http\Controllers\StripeController@success')->name('success');
+Route::get('/', 'App\Http\Controllers\PageController@home')->name('home');
+Route::resource('/tour', 'App\Http\Controllers\TourController');
+Route::get('/tour/checkout/{id}', 'App\Http\Controllers\TourController@checkout')->where('id', '[0-9]+')->name('tour.checkout-form');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
