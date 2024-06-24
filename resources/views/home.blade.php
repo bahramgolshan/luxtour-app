@@ -7,7 +7,7 @@
     @include('sections.carousel-main')
     {{-- @include('sections.booking-form') --}}
     @include('sections.about')
-    @include('sections.features')
+    {{-- @include('sections.features') --}}
     @include('sections.services')
     {{-- @include('sections.destinations') --}}
     @include('sections.tours')

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             $start_date = now()->addDays(fake()->randomDigit());
             $end_date = $start_date->addDays(fake()->randomDigit());
             DB::table('tours')->insert([
+                'city' => fake()->city(),
                 'title' => fake()->city(),
                 'description' => fake()->realText(),
                 'content' => fake()->realText(),
@@ -27,12 +28,14 @@ class DatabaseSeeder extends Seeder
                 'duration_type' => 'hour',
                 'start_date' => now()->addDays(fake()->randomDigit()),
                 'end_date' => now()->addDays(fake()->randomDigit()),
-                'child_price' => fake()->numberBetween($min = 150, $max = 900),
-                'youth_price' => fake()->numberBetween($min = 150, $max = 900),
-                'adult_price' => fake()->numberBetween($min = 150, $max = 900),
-                'senior_price' => fake()->numberBetween($min = 150, $max = 900),
+                'child' => fake()->numberBetween($min = 150, $max = 900),
+                'youth' => fake()->numberBetween($min = 150, $max = 900),
+                'adult' => fake()->numberBetween($min = 150, $max = 900),
+                'senior' => fake()->numberBetween($min = 150, $max = 900),
                 'featured_image' => 'package-' . $i . '.jpg',
                 'is_featured' => true,
+                'rate' => fake()->randomFloat(1, $min = 1, $max = 5),
+                'number_of_votes' => fake()->numberBetween($min = 100, $max = 900),
             ]);
         }
 

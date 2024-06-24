@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
+            $table->string('city', 100);
             $table->string('title', 500);
             $table->string('description', 1000);
             $table->longText('content');
@@ -21,12 +22,14 @@ return new class extends Migration
             $table->enum('duration_type', Tour::$duration_types);
             $table->date('start_date');
             $table->date('end_date');
-            $table->float('child_price');
-            $table->float('youth_price');
-            $table->float('adult_price');
-            $table->float('senior_price');
+            $table->float('child')->comment('price');
+            $table->float('youth')->comment('price');
+            $table->float('adult')->comment('price');
+            $table->float('senior')->comment('price');
             $table->string('featured_image');
             $table->boolean('is_featured')->default(false)->nullable();
+            $table->float('rate')->nullable();
+            $table->integer('number_of_votes')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

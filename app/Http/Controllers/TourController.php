@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tour;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 class TourController extends Controller
@@ -66,42 +67,41 @@ class TourController extends Controller
         //
     }
 
-    public function checkout(Request $request)
-    {
-        $id = Route::current()->parameter('id');
-        $tour = Tour::find($id);
+    // public function checkout(Request $request)
+    // {
+    //     $id = Route::current()->parameter('id');
+    //     $tour = Tour::find($id);
+    //     $ageTiers = Tour::$age_tiers;
+    //     $quantities = Arr::where($request->only($ageTiers), function ($value, $key) {
+    //         return $value > 0;
+    //     });
 
-        $orderData = [];
-        $orderData['child'] = [
-            'price' => $tour->child_price,
-            'quantity' => $request->child,
-            'total' => $tour->child_price * $request->child,
-        ];
-        $orderData['youth'] = [
-            'price' => $tour->youth_price,
-            'quantity' => $request->youth,
-            'total' => $tour->youth_price * $request->youth,
-        ];
-        $orderData['adult'] = [
-            'price' => $tour->adult_price,
-            'quantity' => $request->adult,
-            'total' => $tour->adult_price * $request->adult,
-        ];
-        $orderData['senior'] = [
-            'price' => $tour->senior_price,
-            'quantity' => $request->senior,
-            'total' => $tour->senior_price * $request->senior,
-        ];
-        $orderData['finalPrice'] = $orderData['child']['total']
-            + $orderData['youth']['total']
-            + $orderData['adult']['total']
-            + $orderData['senior']['total'];
+    //     $orderData = $this->getInvoice($tour, $request->get('date'), $quantities);
 
-        $orderData['date'] = $request->date;
+    //     return view('sections.booking-checkout', [
+    //         'tour' => $tour,
+    //         'ageTiers' => $ageTiers,
+    //         'orderData' => $orderData,
+    //     ]);
+    // }
 
-        return view('sections.booking-checkout', [
-            'tour' => $tour,
-            'orderData' => $orderData,
-        ]);
-    }
+    // private function getInvoice($tour, $date, $quantities)
+    // {
+    //     $data = [
+    //         'date' => $date,
+    //         'passengers' => [],
+    //         'finalPrice' => 0,
+    //     ];
+
+    //     foreach ($quantities as $age => $quantity) {
+    //         if ($quantity > 0) {
+    //             $data['passengers'] += [
+    //                 $age => $quantity,
+    //             ];
+    //             $data['finalPrice'] += $tour[$age] * $quantity;
+    //         }
+    //     }
+
+    //     return $data;
+    // }
 }

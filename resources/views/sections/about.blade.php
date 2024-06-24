@@ -24,44 +24,43 @@
                             LuxTour today.
                         </p>
 
-                        <!-- <div class="row gy-2 gx-4 mb-4">
-                                                                                        <div class="col-sm-6">
-                                                                                          <p class="mb-1">
-                                                                                            <i class="fa fa-arrow-right text-primary mr-2"></i>First
-                                                                                            Class Flights
-                                                                                          </p>
-                                                                                        </div>
-                                                                                        <div class="col-sm-6">
-                                                                                          <p class="mb-1">
-                                                                                            <i class="fa fa-arrow-right text-primary mr-2"></i
-                                                                                            >Handpicked Hotels
-                                                                                          </p>
-                                                                                        </div>
-                                                                                        <div class="col-sm-6">
-                                                                                          <p class="mb-1">
-                                                                                            <i class="fa fa-arrow-right text-primary mr-2"></i>5 Star
-                                                                                            Accommodations
-                                                                                          </p>
-                                                                                        </div>
-                                                                                        <div class="col-sm-6">
-                                                                                          <p class="mb-1">
-                                                                                            <i class="fa fa-arrow-right text-primary mr-2"></i>Latest
-                                                                                            Model Vehicles
-                                                                                          </p>
-                                                                                        </div>
-                                                                                        <div class="col-sm-6">
-                                                                                          <p class="mb-1">
-                                                                                            <i class="fa fa-arrow-right text-primary mr-2"></i>150
-                                                                                            Premium City Tours
-                                                                                          </p>
-                                                                                        </div>
-                                                                                        <div class="col-sm-6">
-                                                                                          <p class="mb-1">
-                                                                                            <i class="fa fa-arrow-right text-primary mr-2"></i>24/7
-                                                                                            Service
-                                                                                          </p>
-                                                                                        </div>
-                                                                                      </div> -->
+                        <div class="row gy-2 gx-4 mb-4">
+                            <div class="col-sm-6">
+                                <p class="mb-1">
+                                    <i class="fa fa-arrow-right text-primary mr-2"></i>First
+                                    Class Flights
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="mb-1">
+                                    <i class="fa fa-arrow-right text-primary mr-2"></i>Handpicked Hotels
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="mb-1">
+                                    <i class="fa fa-arrow-right text-primary mr-2"></i>5 Star
+                                    Accommodations
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="mb-1">
+                                    <i class="fa fa-arrow-right text-primary mr-2"></i>Latest
+                                    Model Vehicles
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="mb-1">
+                                    <i class="fa fa-arrow-right text-primary mr-2"></i>150
+                                    Premium City Tours
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="mb-1">
+                                    <i class="fa fa-arrow-right text-primary mr-2"></i>24/7
+                                    Service
+                                </p>
+                            </div>
+                        </div>
 
                         <div class="row mb-4">
                             <div class="col-6">
@@ -71,8 +70,6 @@
                                 <img class="img-fluid" src="{{ asset('assets/images/about-2.jpg') }}" alt="" />
                             </div>
                         </div>
-
-                        <a href="" class="btn btn-primary mt-1">Book Now</a>
                     </div>
                 </div>
             </div>

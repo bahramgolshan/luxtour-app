@@ -21,7 +21,7 @@
                                 <div class="col-md-2">
                                     <div class="mb-3 mb-md-0">
                                         <label for="Youth">
-                                            <span>youth:</span>
+                                            <span>Youth:</span>
                                             <span>{{ '($' . $tour->youth_price . ')' }}</span>
                                         </label>
                                         <input type="number" name="youth" class="form-control p-4" min="0"
@@ -102,7 +102,7 @@
                 event.preventDefault()
                 const data = $('#bookingForm').serializeArray()
 
-                let route = "{!! route('tour.checkout-form', ['id' => $tour->id]) !!}";
+                let route = "{!! route('payment', ['tour' => $tour]) !!}";
 
                 $.ajax({
                     type: "GET",
@@ -119,29 +119,6 @@
                         alert('error')
                     }
                 });
-
-                // const childQuantity = $('#bookingForm input[name="child"]').val()
-                // const childPrice = {!! $tour->child_price !!};
-                // const childTotal = childPrice * childQuantity;
-
-                // const youthQuantity = $('#bookingForm input[name="youth"]').val()
-                // const youthPrice = {!! $tour->youth_price !!};
-                // const youthTotal = youthPrice * youthQuantity;
-
-                // const adultQuantity = $('#bookingForm input[name="adult"]').val()
-                // const adultPrice = {!! $tour->adult_price !!};
-                // const adultTotal = adultPrice * adultQuantity;
-
-                // const seniorQuantity = $('#bookingForm input[name="senior"]').val()
-                // const seniorPrice = {!! $tour->senior_price !!};
-                // const seniorTotal = seniorPrice * seniorQuantity;
-
-                // const selectedDate = $('#bookingForm input[name="date"]').val()
-                // const cartTotal = (childTotal + youthTotal + adultTotal + seniorTotal)
-
-                // let html = ``
-
-
             })
         });
     </script>

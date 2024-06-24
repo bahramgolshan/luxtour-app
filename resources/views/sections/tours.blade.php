@@ -18,7 +18,7 @@
                                 <div class="d-flex justify-content-between mb-3">
                                     <small class="m-0">
                                         <i class="fa fa-map-marker-alt text-primary mr-2"></i>
-                                        <span>{{ $item->title }}</span>
+                                        <span>{{ $item->city }}</span>
                                     </small>
                                     <small class="m-0">
                                         <i class="fa fa-hourglass text-primary mr-2"></i>
@@ -28,14 +28,15 @@
                                     {{-- <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small> --}}
                                 </div>
                                 <a class="h5 text-decoration-none"
-                                    href="{{ route('tour.show', ['tour' => $item]) }}">{{ Str::limit($item->description, 50, '...') }}</a>
+                                    href="{{ route('tour.show', ['tour' => $item]) }}">{{ $item->title }}</a>
                                 <div class="border-top mt-4 pt-4">
                                     <div class="d-flex justify-content-between">
                                         <h6 class="m-0">
-                                            <i class="fa fa-star text-primary mr-2"></i>4.5
-                                            <small>(250)</small>
+                                            <i class="fa fa-star text-primary mr-2"></i>
+                                            <span>{{ $item->rate }}</span>
+                                            <small>({{ $item->number_of_votes }})</small>
                                         </h6>
-                                        <h5 class="m-0">${{ $item->adult_price }}</h5>
+                                        <h5 class="m-0">${{ number_format($item->adult, 2, '.', '') }}</h5>
                                     </div>
                                 </div>
                             </div>
