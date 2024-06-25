@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('status');
             $table->unsignedBigInteger('tour_id');
+            $table->date('date');
             $table->string('name', 100)->nullable();
             $table->string('email', 100)->nullable();
             $table->string('phone', 100)->nullable();
@@ -22,8 +23,11 @@ return new class extends Migration
             $table->integer('youth')->nullable()->comment('quantity');
             $table->integer('adult')->nullable()->comment('quantity');
             $table->integer('senior')->nullable()->comment('quantity');
-            $table->date('date');
-            $table->decimal('total_price', 6, 2);
+            $table->string('currency', 50)->nullable();
+            $table->decimal('amount_subtotal', 12, 2)->nullable();
+            $table->decimal('amount_total', 12, 2)->nullable();
+            $table->decimal('amount_discount', 12, 2)->nullable();
+            $table->decimal('amount_tax', 12, 2)->nullable();
             $table->string('reference')->nullable();
             $table->string('session_id');
             $table->timestamps();

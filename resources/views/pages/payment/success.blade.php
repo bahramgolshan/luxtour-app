@@ -46,7 +46,11 @@
                                             @endforeach
                                         </p>
                                         <p><strong>Total Amount:</strong>
-                                            ${{ number_format($booking->total_price, 2, '.', '') }}</p>
+                                            ${{ number_format($booking->amount_subtotal, 2, '.', '') }}</p>
+                                        <p><strong>Tax Amount:</strong>
+                                            ${{ number_format($booking->amount_tax, 2, '.', '') }}</p>
+                                        <p><strong>Total Amount Paid:</strong>
+                                            ${{ number_format($booking->amount_total, 2, '.', '') }}</p>
                                         <p><strong>Notes:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                             Rem, odio.</p>
                                     </div>

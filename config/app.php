@@ -87,6 +87,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Currecu Configuration
+    |--------------------------------------------------------------------------
+    |
+    | The application currency determines the default currency that will be used
+    | by the translation service provider. You are free to set this value
+    | to any of the currencys which will be supported by the application.
+    |
+    */
+
+    'currency' => [
+        'unit' => 'cad',
+        'symbol' => 'C$'
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Fallback Locale
     |--------------------------------------------------------------------------
     |

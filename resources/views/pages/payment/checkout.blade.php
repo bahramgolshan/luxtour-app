@@ -34,7 +34,7 @@
                                 </div>
                             </td>
                             <td class="text-center font-weight-semibold align-middle p-4">
-                                ${{ number_format($tour[$age], 2, '.', '') }}
+                                {{ config('app.currency.symbol') . number_format($tour[$age], 2, '.', '') }}
                             </td>
                             <td class="text-center font-weight-semibold align-middle p-4">
                                 {{ $quantity }}
@@ -42,17 +42,19 @@
                                     value="{{ $quantity }}">
                             </td>
                             <td class="text-center font-weight-semibold align-middle p-4">
-                                ${{ number_format($tour[$age] * $quantity, 2, '.', '') }}
+                                {{ config('app.currency.symbol') . number_format($tour[$age] * $quantity, 2, '.', '') }}
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td class="font-weight-normal" colspan="3">Total</td>
+                        <td class="font-weight-normal" colspan="3">
+                            <strong>Total Amount</strong>
+                        </td>
                         <td class="text-center font-weight-normal">
                             <div class="text-large">
-                                <strong>${{ number_format($bookingData['totalPrice'], 2, '.', '') }}</strong>
+                                <strong>{{ config('app.currency.symbol') . number_format($bookingData['amountTotal'], 2, '.', '') }}</strong>
                             </div>
                         </td>
                     </tr>
@@ -60,10 +62,10 @@
             </table>
         </div>
 
-        <div class="py-4">
+        {{-- <div class="py-4">
             <p class="text-muted font-weight-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
                 delectus reprehenderit harum voluptate.</p>
-        </div>
+        </div> --}}
 
         <div class="float-right">
             <button type="button" class="btn btn-secondary md-btn-flat mt-2 mr-3" data-dismiss="modal">Close</button>

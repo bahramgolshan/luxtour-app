@@ -36,7 +36,9 @@
                                             <span>{{ $item->rate }}</span>
                                             <small>({{ $item->number_of_votes }})</small>
                                         </h6>
-                                        <h5 class="m-0">${{ number_format($item->adult, 2, '.', '') }}</h5>
+                                        <h5 class="m-0">
+                                            {{ config('app.currency.symbol') . number_format($item->adult, 2, '.', '') }}
+                                        </h5>
                                     </div>
                                 </div>
                             </div>

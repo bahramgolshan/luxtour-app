@@ -3,7 +3,7 @@
 @section('title', 'blog-category List')
 
 @section('content')
-    @include('sections.carousel-main')
+    @include('sections.carousel-tour')
     @include('sections.booking-form')
-    @include('sections.tour-single')
+    @include('sections.tour-detail')
 @endsection

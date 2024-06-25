@@ -11,4 +11,13 @@ class Tour extends Model
 
     public static $duration_types = ['minute', 'hour', 'day', 'week', 'month', 'year'];
     public static $age_tiers = ['child', 'youth', 'adult', 'senior'];
+
+    public function images()
+    {
+        return $this->hasMany(TourImage::class, 'tour_id');
+    }
+    public function attributes()
+    {
+        return $this->hasMany(TourAttribute::class, 'tour_id');
+    }
 }

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'App\Http\Controllers\PageController@home')->name('home');
-Route::resource('/tour', 'App\Http\Controllers\TourController');
+Route::get('/tour/{tour}', 'App\Http\Controllers\TourController@show')->name('tour.show');
 Route::get('/tour/checkout/{id}', 'App\Http\Controllers\TourController@checkout')->where('id', '[0-9]+')->name('tour.checkout-form');
 
 Route::get('/payment/{tour}', 'App\Http\Controllers\PaymentController@index')->where('tour', '[0-9]+')->name('payment');

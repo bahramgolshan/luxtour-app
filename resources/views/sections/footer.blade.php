@@ -30,13 +30,14 @@
                     Our Services
                 </h5>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
+                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#about' }}"><i
+                            class="fa fa-angle-right mr-2"></i>About</a>
+                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#services' }}"><i
+                            class="fa fa-angle-right mr-2"></i>Services</a>
+                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#packages' }}"><i
+                            class="fa fa-angle-right mr-2"></i>Packages</a>
+                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#testimonial' }}"><i
+                            class="fa fa-angle-right mr-2"></i>Testimonial</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -44,13 +45,14 @@
                     Usefull Links
                 </h5>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
+                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#about' }}"><i
+                            class="fa fa-angle-right mr-2"></i>About</a>
+                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#services' }}"><i
+                            class="fa fa-angle-right mr-2"></i>Services</a>
+                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#packages' }}"><i
+                            class="fa fa-angle-right mr-2"></i>Packages</a>
+                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#testimonial' }}"><i
+                            class="fa fa-angle-right mr-2"></i>Testimonial</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -62,18 +64,6 @@
                 </p>
                 <p><i class="fa fa-phone-alt mr-2"></i>+1 437 313 0022</p>
                 <p><i class="fa fa-envelope mr-2"></i>info@luxtour.com</p>
-                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px">
-                    Newsletter
-                </h6>
-                <div class="w-100">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 25px"
-                            placeholder="Your Email" />
-                        <div class="input-group-append">
-                            <button class="btn btn-primary px-3">Sign Up</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -82,7 +72,7 @@
         <div class="row">
             <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
                 <p class="m-0 text-white-50">
-                    Copyright &copy; <a href="#">Domain</a>. All Rights Reserved.
+                    Copyright &copy; <a href="{{ route('home') }}">LuxTour</a>. All Rights Reserved.
                 </p>
             </div>
             <div class="col-lg-6 text-center text-md-right">

@@ -1,6 +1,6 @@
 <!-- Booking Start -->
 <section id="booking">
-    <div class="container-fluid booking mt-5 pb-5">
+    <div class="container-fluid booking mt-5">
         <div class="container pb-5">
             <div class="bg-light shadow" style="padding: 30px">
                 <form id="bookingForm">
@@ -12,7 +12,7 @@
                                     <div class="mb-3 mb-md-0">
                                         <label for="child">
                                             <span>Child:</span>
-                                            <span>{{ '($' . $tour->child_price . ')' }}</span>
+                                            <span>{{ config('app.currency.symbol') . $tour->child }}</span>
                                         </label>
                                         <input type="number" name="child" class="form-control p-4" min="0"
                                             max="5" step="1" id="child" value="0">
@@ -22,7 +22,7 @@
                                     <div class="mb-3 mb-md-0">
                                         <label for="Youth">
                                             <span>Youth:</span>
-                                            <span>{{ '($' . $tour->youth_price . ')' }}</span>
+                                            <span>{{ config('app.currency.symbol') . $tour->youth }}</span>
                                         </label>
                                         <input type="number" name="youth" class="form-control p-4" min="0"
                                             max="5" step="1" id="youth" value="0">
@@ -32,7 +32,7 @@
                                     <div class="mb-3 mb-md-0">
                                         <label for="adult">
                                             <span>Adult:</span>
-                                            <span>{{ '($' . $tour->adult_price . ')' }}</span>
+                                            <span>{{ config('app.currency.symbol') . $tour->adult }}</span>
                                         </label>
                                         <input type="number" name="adult" class="form-control p-4" min="0"
                                             max="5" step="1" id="adult" value="0">
@@ -42,7 +42,7 @@
                                     <div class="mb-3 mb-md-0">
                                         <label for="senior">
                                             <span>Senior:</span>
-                                            <span>{{ '($' . $tour->senior_price . ')' }}</span>
+                                            <span>{{ config('app.currency.symbol') . $tour->senior }}</span>
                                         </label>
                                         <input type="number" name="senior" class="form-control p-4" min="0"
                                             max="5" step="1" id="senior" value="0">

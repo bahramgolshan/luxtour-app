@@ -21,7 +21,7 @@ class PaymentController extends Controller
 
         $bookingData = $this->getInvoice($tour, $request->get('date'), $quantities);
 
-        return view('payment.checkout', [
+        return view('pages.payment.checkout', [
             'tour' => $tour,
             'ageTiers' => $ageTiers,
             'bookingData' => $bookingData,
@@ -31,7 +31,7 @@ class PaymentController extends Controller
     public function checkout(Tour $tour, Request $request)
     {
         $lineItems = [];
-        $totalPrice = 0;
+        $amountTotal = 0;
 
         $ageTiers = Tour::$age_tiers;
         $quantities = Arr::where($request->only($ageTiers), function ($value, $key) {
@@ -42,7 +42,7 @@ class PaymentController extends Controller
         foreach ($bookingData['passengers'] as $age => $quantity) {
             $lineItems[] = [
                 'price_data' => [
-                    'currency' => 'cad',
+                    'currency' => config('app.currency.unit'),
                     'product_data' => [
                         'name' => __('tour.' . $age . '.title') . ' ' . __('tour.' . $age . '.ageRange'),
                     ],
@@ -58,6 +58,7 @@ class PaymentController extends Controller
         $checkout_session = \Stripe\Checkout\Session::create([
             'line_items' => $lineItems,
             'mode' => 'payment',
+            'automatic_tax' => ['enabled' => true],
             'phone_number_collection' => ['enabled' => true],
             'success_url' => route('payment.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
             'cancel_url' => route('payment.cancel', [], true),
@@ -67,13 +68,13 @@ class PaymentController extends Controller
         $booking = new Booking();
         $booking->status = 'unpaid';
         $booking->tour_id = $tour->id;
-        $booking->total_price = $bookingData['totalPrice'];
+        $booking->amount_total = $bookingData['amountTotal'];
         $booking->child = array_key_exists('child', $bookingData['passengers']) ? $bookingData['passengers']['child'] : null;
         $booking->youth = array_key_exists('youth', $bookingData['passengers']) ? $bookingData['passengers']['youth'] : null;
         $booking->adult = array_key_exists('adult', $bookingData['passengers']) ? $bookingData['passengers']['adult'] : null;
         $booking->senior = array_key_exists('senior', $bookingData['passengers']) ? $bookingData['passengers']['senior'] : null;
         $booking->date = $bookingData['date'];
-        $booking->total_price = $bookingData['totalPrice'];
+        $booking->amount_total = $bookingData['amountTotal'];
         $booking->reference = uniqid();
         $booking->session_id = $checkout_session->id;
         $booking->save();
@@ -86,33 +87,38 @@ class PaymentController extends Controller
         $sessionId = $request->get('session_id');
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
-        try {
-            $session = \Stripe\Checkout\Session::retrieve($sessionId);
-            if (!$session) {
-                throw new NotFoundHttpException();
-            }
-
-            $booking = Booking::where('session_id', $session->id)->first();
-            if (!$booking) {
-                throw new NotFoundHttpException();
-            }
-            if ($booking->status === 'unpaid') {
-                $booking->status = 'paid';
-                $booking->name = $session->customer_details->name ?? null;
-                $booking->email = $session->customer_details->email ?? null;
-                $booking->phone = $session->customer_details->phone ?? null;
-                $booking->save();
-            }
-
-            return view('payment.success', compact('booking'));
-        } catch (\Exception $e) {
+        // try {
+        $session = \Stripe\Checkout\Session::retrieve($sessionId);
+        if (!$session) {
             throw new NotFoundHttpException();
         }
+        $booking = Booking::where('session_id', $session->id)->first();
+        if (!$booking) {
+            throw new NotFoundHttpException();
+        }
+        // dd($session->amount_subtotal, $session->amount_total, $session->currency, $session->total_details->amount_discount, $session->total_details->amount_tax);
+        if ($booking->status === 'unpaid') {
+            $booking->status = $session->payment_status;
+            $booking->name = $session->customer_details->name ?? null;
+            $booking->email = $session->customer_details->email ?? null;
+            $booking->phone = $session->customer_details->phone ?? null;
+            $booking->currency = $session->currency ?? null;
+            $booking->amount_subtotal = $session->amount_subtotal / 100 ?? null;
+            $booking->amount_total = $session->amount_total / 100 ?? null;
+            $booking->amount_discount = $session->total_details->amount_discount / 100 ?? null;
+            $booking->amount_tax = $session->total_details->amount_tax / 100 ?? null;
+            $booking->save();
+        }
+
+        return view('pages.payment.success', compact('booking'));
+        // } catch (\Exception $e) {
+        //     throw new NotFoundHttpException();
+        // }
     }
 
     public function cancel()
     {
-        return view('payment.cancel');
+        return view('pages.payment.cancel');
     }
 
     private function getInvoice($tour, $date, $quantities)
@@ -120,7 +126,7 @@ class PaymentController extends Controller
         $data = [
             'date' => $date,
             'passengers' => [],
-            'totalPrice' => 0,
+            'amountTotal' => 0,
         ];
 
         foreach ($quantities as $age => $quantity) {
@@ -128,7 +134,7 @@ class PaymentController extends Controller
                 $data['passengers'] += [
                     $age => $quantity,
                 ];
-                $data['totalPrice'] += $tour[$age] * $quantity;
+                $data['amountTotal'] += $tour[$age] * $quantity;
             }
         }
 
