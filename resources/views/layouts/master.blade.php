@@ -42,7 +42,7 @@
 
     @stack('after-styles')
 
-    <title>{{ config('app.name') }} - @yield('title')</title>
+    <title>{{ config('app.name') }} @yield('title')</title>
 </head>
 
 <body>

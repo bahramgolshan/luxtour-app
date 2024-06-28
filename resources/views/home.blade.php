@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('title', 'blog-category List')
+@section('title', '')
 
 @section('content')
 

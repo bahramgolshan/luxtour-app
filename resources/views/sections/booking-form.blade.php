@@ -57,7 +57,7 @@
                                             data-target="#date1" data-toggle="datetimepicker" /> --}}
                                             <input type="date" id="date1"
                                                 class="form-control p-4 datetimepicker-input" name="date"
-                                                min="{{ \Carbon\Carbon::parse($tour->start_date)->format('Y-m-d') }}"
+                                                min="{{ \Carbon\Carbon::parse(now())->format('Y-m-d') }}"
                                                 max="{{ \Carbon\Carbon::parse($tour->end_date)->format('Y-m-d') }}"
                                                 required>
                                         </div>

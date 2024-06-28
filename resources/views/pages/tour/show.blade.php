@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('title', 'blog-category List')
+@section('title', $tour->title)
 
 @section('content')
     @include('sections.carousel-tour')

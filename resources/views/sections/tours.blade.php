@@ -6,7 +6,7 @@
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px">
                     Packages
                 </h6>
-                <h1>Pefect Tour Packages</h1>
+                <h1>Pefrect Tour Packages</h1>
             </div>
             <div class="row">
                 @foreach ($tours as $item)
@@ -22,7 +22,7 @@
                                     </small>
                                     <small class="m-0">
                                         <i class="fa fa-hourglass text-primary mr-2"></i>
-                                        <span>{{ $item->duration }}</span>3
+                                        <span>{{ $item->duration }}</span>
                                         <span>{{ $item->duration_type }}</span>
                                     </small>
                                     {{-- <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small> --}}

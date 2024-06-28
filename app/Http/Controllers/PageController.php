@@ -11,7 +11,7 @@ class PageController extends Controller
 {
     public function home()
     {
-        $tours = Tour::where('start_date', '>=', now())->where('end_date', '>=', now())->get();
+        $tours = Tour::where('end_date', '>=', now())->get();
         $testimonials = Testimonial::where('is_featured', true)->get();
 
         return view('home', [
