@@ -17,13 +17,13 @@
                     Follow Us
                 </h6>
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-outline-primary btn-square mr-2" href="{{ $settings['facebook'] }}"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="{{ $settings['twitter'] }}"><i
-                            class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="{{ $settings['instagram'] }}"><i
-                            class="fab fa-instagram"></i></a>
-                    <a class="btn btn-outline-primary btn-square" href="{{ $settings['youtube'] }}"><i
+                    <a class="btn btn-outline-primary btn-square mr-2" href="{{ $settings['facebook'] }}"
+                        target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="{{ $settings['twitter'] }}"
+                        target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="{{ $settings['instagram'] }}"
+                        target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-primary btn-square" href="{{ $settings['youtube'] }}" target="_blank"><i
                             class="fab fa-youtube"></i></a>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                             class="fa fa-angle-right mr-2"></i>About</a>
                     <a class="text-white-50 mb-2" href="{{ route('home') . '/#services' }}"><i
                             class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#packages' }}"><i
+                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#tours' }}"><i
                             class="fa fa-angle-right mr-2"></i>Packages</a>
                     <a class="text-white-50 mb-2" href="{{ route('home') . '/#testimonial' }}"><i
                             class="fa fa-angle-right mr-2"></i>Testimonial</a>

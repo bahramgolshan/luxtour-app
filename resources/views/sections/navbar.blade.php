@@ -20,7 +20,7 @@
                         <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
                         <a href="{{ route('home') . '/#about' }}" class="nav-item nav-link">About</a>
                         <a href="{{ route('home') . '/#services' }}" class="nav-item nav-link">Services</a>
-                        <a href="{{ route('home') . '/#packages' }}" class="nav-item nav-link">Tour Packages</a>
+                        <a href="{{ route('home') . '/#tours' }}" class="nav-item nav-link">Packages</a>
                         <a href="/#testimonial" class="nav-item nav-link">Testimonial</a>
                         {{-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
