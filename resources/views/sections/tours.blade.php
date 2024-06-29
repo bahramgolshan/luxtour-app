@@ -11,39 +11,55 @@
             <div class="row">
                 @foreach ($tours as $item)
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="package-item bg-white mb-2">
-                            <a class="h5 text-decoration-none" href="{{ route('tour.show', ['tour' => $item]) }}">
-                                <img class="img-fluid" src="{{ asset('assets/images/tours/' . $item->featured_image) }}"
+                        <div class="package-item bg-white mb-2 position-relative">
+                            <a href={{ route('tour.show', ['tour' => $item]) }} class="text-dark">
+                                <img class="package-item_img img-fluid"
+                                    src="{{ asset('assets/images/tours/' . $item->featured_image) }}"
                                     alt="image for {{ $item->title }}" />
-                            </a>
-                            <div class="p-4">
-                                <div class="d-flex justify-content-between mb-3">
-                                    <small class="m-0">
-                                        <i class="fa fa-map-marker-alt text-primary mr-2"></i>
-                                        <span>{{ $item->city }}</span>
-                                    </small>
-                                    <small class="m-0">
-                                        <i class="fa fa-hourglass text-primary mr-2"></i>
-                                        <span>{{ $item->duration }}</span>
-                                        <span>{{ $item->duration_type }}</span>
-                                    </small>
-                                    {{-- <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small> --}}
+                                <div class="position-absolute d-flex flex-column" style="top: 15px; left:0">
+                                    <div class="badge bg-primary px-2">
+                                        <span>Save </span>
+                                        <span class="text-danger"
+                                            style="font-size: 25px">{{ config('app.currency.symbol') . '15' }}</span>
+                                    </div>
+                                    {{-- <div class="badge bg-danger text-primary px-2">
+                                    <span>Recommended</span>
+                                </div> --}}
                                 </div>
-                                <a class="h5 text-decoration-none"
-                                    href="{{ route('tour.show', ['tour' => $item]) }}">{{ $item->title }}</a>
-                                <div class="border-top mt-4 pt-4">
-                                    <div class="d-flex justify-content-between">
-                                        <h6 class="m-0">
-                                            <i class="fa fa-star text-primary mr-2"></i>
-                                            <span>{{ $item->rate }}</span>
+                                <div class="bg-primary" style="height: 12px;"></div>
+                                <div class="p-4">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <small class="m-0">
+                                            <i class="fa fa-map-signs text-primary mr-2"></i>
+                                            <span>{{ Str::upper($item->tour_type) }}</span>
+                                        </small>
+                                        <small class="m-0">
+                                            @for ($i = 0; $i < ceil($item->rate); $i++)
+                                                <span class="fa fa-star text-primary"></span>
+                                            @endfor
+                                            {{-- <i class="fa fa-star text-primary mr-2"></i> --}}
+                                            <span>{{ ceil($item->rate) }}</span>
                                             <small>({{ $item->number_of_votes }})</small>
-                                        </h6>
-                                        <h5 class="m-0">
-                                            {{ config('app.currency.symbol') . number_format($item->adult, 2, '.', '') }}
-                                        </h5>
+                                        </small>
+                                    </div>
+                                    <h5>{{ $item->city }}: {{ $item->title }}</h5>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
+                                        enim!</p>
+                                    <div class="border-top mt-4 pt-4">
+                                        <div class="price">
+                                            <div class="price-old">
+                                                <span class="font-weight-bold"><del>From
+                                                        {{ config('app.currency.symbol') . number_format($item->adult, 2, '.', '') }}</del></span>
+                                            </div>
+                                            <div class="price-now">
+                                                <span class="font-weight-bold text-danger">From
+                                                    {{ config('app.currency.symbol') . number_format($item->adult, 2, '.', '') }}</span>
+                                                <small>per person</small>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 @endforeach
