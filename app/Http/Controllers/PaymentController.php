@@ -19,7 +19,7 @@ class PaymentController extends Controller
             return $value > 0;
         });
 
-        $bookingData = $this->getInvoice($tour, $request->get('date'), $quantities);
+        $bookingData = $this->getInvoice($tour, $request->get('name'), $request->get('date'), $quantities);
 
         return view('pages.payment.checkout', [
             'tour' => $tour,
@@ -37,7 +37,7 @@ class PaymentController extends Controller
         $quantities = Arr::where($request->only($ageTiers), function ($value, $key) {
             return $value > 0;
         });
-        $bookingData = $this->getInvoice($tour, $request->get('date'), $quantities);
+        $bookingData = $this->getInvoice($tour, $request->name, $request->get('date'), $quantities);
 
         foreach ($bookingData['passengers'] as $age => $quantity) {
             $lineItems[] = [
@@ -68,6 +68,7 @@ class PaymentController extends Controller
         $booking = new Booking();
         $booking->status = 'unpaid';
         $booking->tour_id = $tour->id;
+        $booking->name = $bookingData['name'];
         $booking->amount_total = $bookingData['amountTotal'];
         $booking->child = array_key_exists('child', $bookingData['passengers']) ? $bookingData['passengers']['child'] : null;
         $booking->youth = array_key_exists('youth', $bookingData['passengers']) ? $bookingData['passengers']['youth'] : null;
@@ -99,7 +100,7 @@ class PaymentController extends Controller
         // dd($session->amount_subtotal, $session->amount_total, $session->currency, $session->total_details->amount_discount, $session->total_details->amount_tax);
         if ($booking->status === 'unpaid') {
             $booking->status = $session->payment_status;
-            $booking->name = $session->customer_details->name ?? null;
+            // $booking->name = $session->customer_details->name ?? null;
             $booking->email = $session->customer_details->email ?? null;
             $booking->phone = $session->customer_details->phone ?? null;
             $booking->currency = $session->currency ?? null;
@@ -121,9 +122,10 @@ class PaymentController extends Controller
         return view('pages.payment.cancel');
     }
 
-    private function getInvoice($tour, $date, $quantities)
+    private function getInvoice($tour, $name, $date, $quantities)
     {
         $data = [
+            'name' => $name,
             'date' => $date,
             'passengers' => [],
             'amountTotal' => 0,

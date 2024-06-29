@@ -1,7 +1,7 @@
 <!-- Footer Start -->
 <section id="footer">
     <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px">
-        <div class="row pt-5">
+        <div class="row justify-content-around pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
                 <a href="" class="navbar-brand">
                     <h1 class="text-primary">
@@ -17,32 +17,19 @@
                     Follow Us
                 </h6>
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i
+                    <a class="btn btn-outline-primary btn-square mr-2" href="{{ $settings['facebook'] }}"><i
                             class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i
-                            class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="{{ $settings['twitter'] }}"><i
+                            class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="{{ $settings['instagram'] }}"><i
+                            class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-primary btn-square" href="{{ $settings['youtube'] }}"><i
+                            class="fab fa-youtube"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px">
-                    Our Services
-                </h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#about' }}"><i
-                            class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#services' }}"><i
-                            class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#packages' }}"><i
-                            class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="{{ route('home') . '/#testimonial' }}"><i
-                            class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px">
-                    Usefull Links
+                    Links
                 </h5>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white-50 mb-2" href="{{ route('home') . '/#about' }}"><i
@@ -60,10 +47,10 @@
                     Contact Us
                 </h5>
                 <p>
-                    <i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA
+                    <i class="fa fa-map-marker-alt mr-2"></i>{{ $settings['address'] }}
                 </p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+1 437 313 0022</p>
-                <p><i class="fa fa-envelope mr-2"></i>info@luxtour.com</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>{{ $settings['phone'] }}</p>
+                <p><i class="fa fa-envelope mr-2"></i>{{ $settings['email'] }}</p>
             </div>
         </div>
     </div>

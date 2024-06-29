@@ -12,8 +12,10 @@
                 @foreach ($tours as $item)
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="package-item bg-white mb-2">
-                            <img class="img-fluid" src="{{ asset('assets/images/tours/' . $item->featured_image) }}"
-                                alt="image for {{ $item->title }}" />
+                            <a class="h5 text-decoration-none" href="{{ route('tour.show', ['tour' => $item]) }}">
+                                <img class="img-fluid" src="{{ asset('assets/images/tours/' . $item->featured_image) }}"
+                                    alt="image for {{ $item->title }}" />
+                            </a>
                             <div class="p-4">
                                 <div class="d-flex justify-content-between mb-3">
                                     <small class="m-0">

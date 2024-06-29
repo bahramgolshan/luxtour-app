@@ -9,7 +9,7 @@
                             Mega Offer
                         </h6>
                         <h1 class="text-white">
-                            <span class="text-primary">30% OFF</span> For Honeymoon
+                            <span class="text-primary">10% OFF</span> For Honeymoon
                         </h1>
                     </div>
                     <p class="text-white">
@@ -52,10 +52,10 @@
                                 </div>
                                 <div class="form-group">
                                     <select class="custom-select px-4" style="height: 47px">
-                                        <option selected>Select a destination</option>
-                                        <option value="1">destination 1</option>
-                                        <option value="2">destination 1</option>
-                                        <option value="3">destination 1</option>
+                                        <option selected disabled>Select a destination</option>
+                                        @foreach ($tours as $tour)
+                                            <option value="{{ $tour->id }}">{{ $tour->title }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div>

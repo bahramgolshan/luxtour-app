@@ -46,6 +46,10 @@
 </head>
 
 <body>
+    @php
+        $settings = App\Models\Setting::get()->pluck('value', 'key');
+    @endphp
+
     @include('sections.top-bar')
     @include('sections.navbar')
 

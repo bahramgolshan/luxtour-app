@@ -6,37 +6,58 @@
                 <form id="bookingForm">
                     @csrf
                     <div class="row align-items-end" style="min-height: 60px">
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <div class="row align-items-end">
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div class="mb-3 mb-md-0">
-                                        <label for="name">
-                                            <span>Full Name</span>
+                                        <label for="child">
+                                            <span>Child:</span>
+                                            <span>{{ config('app.currency.symbol') . $tour->child }}</span>
                                         </label>
-                                        <input type="text" name="name" class="form-control p-4" id="name"
-                                            placeholder="Your Full Name" required>
+                                        <input type="number" name="child" class="form-control p-4" min="0"
+                                            max="5" step="1" id="child" value="0">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
+                                    <div class="mb-3 mb-md-0">
+                                        <label for="Youth">
+                                            <span>Youth:</span>
+                                            <span>{{ config('app.currency.symbol') . $tour->youth }}</span>
+                                        </label>
+                                        <input type="number" name="youth" class="form-control p-4" min="0"
+                                            max="5" step="1" id="youth" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
                                     <div class="mb-3 mb-md-0">
                                         <label for="adult">
-                                            <span>Number of travellers</span>
-                                            {{-- <span
-                                                class="text-primary">({{ config('app.currency.symbol') . $tour->adult }})</span> --}}
+                                            <span>Adult:</span>
+                                            <span>{{ config('app.currency.symbol') . $tour->adult }}</span>
                                         </label>
-                                        <input type="number" name="adult" class="form-control p-4" min="1"
-                                            step="1" id="adult" value="0">
+                                        <input type="number" name="adult" class="form-control p-4" min="0"
+                                            max="5" step="1" id="adult" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3 mb-md-0">
+                                        <label for="senior">
+                                            <span>Senior:</span>
+                                            <span>{{ config('app.currency.symbol') . $tour->senior }}</span>
+                                        </label>
+                                        <input type="number" name="senior" class="form-control p-4" min="0"
+                                            max="5" step="1" id="senior" value="0">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3 mb-md-0">
-                                        <label for="date">Date</label>
-                                        <div class="date" id="date1">
+                                        <label for="date">Date:</label>
+                                        <div class="date" id="date1" data-target-input="nearest">
                                             {{-- <input type="text" id="date"
                                             class="form-control p-4 datetimepicker-input" placeholder="Depart Date OLD"
                                             data-target="#date1" data-toggle="datetimepicker" /> --}}
-                                            <input type="date" id="date" class="form-control p-4" name="date"
-                                                min="{{ \Carbon\Carbon::parse(now() > $tour->start_date ? now() : $tour->start_date)->format('Y-m-d') }}"
+                                            <input type="date" id="date1"
+                                                class="form-control p-4 datetimepicker-input" name="date"
+                                                min="{{ \Carbon\Carbon::parse(now())->format('Y-m-d') }}"
                                                 max="{{ \Carbon\Carbon::parse($tour->end_date)->format('Y-m-d') }}"
                                                 required>
                                         </div>
@@ -44,7 +65,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <button class="btn btn-primary btn-block" type="submit" style="height: 50px">
                                 Book
                             </button>

@@ -24,7 +24,7 @@
                             LuxTour today.
                         </p>
 
-                        <div class="row gy-2 gx-4 mb-4">
+                        {{-- <div class="row gy-2 gx-4 mb-4">
                             <div class="col-sm-6">
                                 <p class="mb-1">
                                     <i class="fa fa-arrow-right text-primary mr-2"></i>First
@@ -60,14 +60,16 @@
                                     Service
                                 </p>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row mb-4">
                             <div class="col-6">
-                                <img class="img-fluid" src="{{ asset('assets/images/about-1.jpg') }}" alt="" />
+                                <img class="img-fluid h-100 w-100" src="{{ asset('assets/images/about-1.jpg') }}"
+                                    alt="" />
                             </div>
                             <div class="col-6">
-                                <img class="img-fluid" src="{{ asset('assets/images/about-2.jpg') }}" alt="" />
+                                <img class="img-fluid h-100 w-100" src="{{ asset('assets/images/about-2.jpg') }}"
+                                    alt="" />
                             </div>
                         </div>
                     </div>
