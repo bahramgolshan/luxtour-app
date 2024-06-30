@@ -20,4 +20,8 @@ class Tour extends Model
     {
         return $this->hasMany(TourAttribute::class, 'tour_id');
     }
+    public function shifts()
+    {
+        return $this->hasMany(TourShift::class, 'tour_id');
+    }
 }

@@ -10,19 +10,8 @@
                             <div class="row align-items-end">
                                 <div class="col-md-4">
                                     <div class="mb-3 mb-md-0">
-                                        <label for="name">
-                                            <span>Full Name</span>
-                                        </label>
-                                        <input type="text" name="name" class="form-control p-4" id="name"
-                                            placeholder="Your Full Name" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3 mb-md-0">
                                         <label for="adult">
                                             <span>Number of travellers</span>
-                                            {{-- <span
-                                                class="text-primary">({{ config('app.currency.symbol') . $tour->adult }})</span> --}}
                                         </label>
                                         <input type="number" name="adult" class="form-control p-4" min="1"
                                             step="1" id="adult" value="0">
@@ -42,11 +31,28 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3 mb-md-0">
+                                        <label for="adult">
+                                            <span>Pickup Time</span>
+                                        </label>
+                                        <select name="shift_id" class="custom-select px-4" style="height: 47px"
+                                            required>
+                                            <option value="">--Select Time--</option>
+                                            @foreach ($tour->shifts as $shift)
+                                                <option value="{{ $shift->id }}">
+                                                    {{ \Carbon\Carbon::parse($shift->start_time)->format('h:i A') }}
+                                                    {{ isset($shift->end_time) ? ' - ' . \Carbon\Carbon::parse($shift->end_time)->format('h:i A') : '' }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-primary btn-block" type="submit" style="height: 50px">
-                                Book
+                                Check Availability
                             </button>
                         </div>
                     </div>
@@ -58,7 +64,8 @@
 <!-- Booking End -->
 
 <!-- Modal -->
-<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true"
+    data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

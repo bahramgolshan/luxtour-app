@@ -17,14 +17,13 @@
                                     src="{{ asset('assets/images/tours/' . $item->featured_image) }}"
                                     alt="image for {{ $item->title }}" />
                                 <div class="position-absolute d-flex flex-column" style="top: 15px; left:0">
-                                    <div class="badge bg-primary px-2">
-                                        <span>Save </span>
-                                        <span class="text-danger"
-                                            style="font-size: 25px">{{ config('app.currency.symbol') . '15' }}</span>
-                                    </div>
-                                    {{-- <div class="badge bg-danger text-primary px-2">
-                                    <span>Recommended</span>
-                                </div> --}}
+                                    @isset($item->discount)
+                                        <div class="badge bg-primary px-2">
+                                            <span>Save </span>
+                                            <span class="text-danger"
+                                                style="font-size: 22px">{{ config('app.currency.symbol') . number_format($item->adult * ($item->discount / 100), 2, '.', '') }}</span>
+                                        </div>
+                                    @endisset
                                 </div>
                                 <div class="bg-primary" style="height: 12px;"></div>
                                 <div class="p-4">
@@ -47,15 +46,23 @@
                                         enim!</p>
                                     <div class="border-top mt-4 pt-4">
                                         <div class="price">
-                                            <div class="price-old">
-                                                <span class="font-weight-bold"><del>From
-                                                        {{ config('app.currency.symbol') . number_format($item->adult, 2, '.', '') }}</del></span>
-                                            </div>
-                                            <div class="price-now">
-                                                <span class="font-weight-bold text-danger">From
-                                                    {{ config('app.currency.symbol') . number_format($item->adult, 2, '.', '') }}</span>
-                                                <small>per person</small>
-                                            </div>
+                                            @if (isset($item->discount))
+                                                <div class="price-old">
+                                                    <span class="font-weight-bold"><del>From
+                                                            {{ config('app.currency.symbol') . number_format($item->adult, 2, '.', '') }}</del></span>
+                                                </div>
+                                                <div class="price-now">
+                                                    <span class="font-weight-bold text-danger">From
+                                                        {{ config('app.currency.symbol') . number_format($item->adult - $item->adult * ($item->discount / 100), 2, '.', '') }}</span>
+                                                    <small>per person</small>
+                                                </div>
+                                            @else
+                                                <div class="price-now">
+                                                    <span class="font-weight-bold">From
+                                                        {{ config('app.currency.symbol') . number_format($item->adult, 2, '.', '') }}</span>
+                                                    <small>per person</small>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

@@ -15,7 +15,7 @@ class SettingSeeder extends Seeder
     {
         $data = [
             // ['key', 'value'],
-            ['address', '123 Street, New York, USA'],
+            ['address', '1057 W Georgia St, Vancouver, BC'],
             ['phone', '+1 437 313 0022'],
             ['email', 'info@luxtour.com'],
             ['instagram', '#'],

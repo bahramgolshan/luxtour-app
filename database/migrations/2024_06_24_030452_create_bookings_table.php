@@ -15,10 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('status');
             $table->unsignedBigInteger('tour_id');
+            $table->unsignedBigInteger('tour_shift_id');
             $table->date('date');
-            $table->string('name', 100)->nullable();
+            $table->string('first_name', 100)->nullable();
+            $table->string('last_name', 100)->nullable();
             $table->string('email', 100)->nullable();
-            $table->string('phone', 100)->nullable();
+            $table->string('mobile', 100)->nullable();
+            $table->string('mobile_2', 100)->nullable();
+            $table->string('country', 100)->nullable();
+            $table->string('city', 100)->nullable();
+            $table->string('address', 100)->nullable();
+            $table->boolean('conditions_accepted')->nullable();
             $table->integer('child')->nullable()->comment('quantity');
             $table->integer('youth')->nullable()->comment('quantity');
             $table->integer('adult')->nullable()->comment('quantity');
@@ -33,6 +40,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('tour_id')->references('id')->on('tours')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('tour_shift_id')->references('id')->on('tour_shifts')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
