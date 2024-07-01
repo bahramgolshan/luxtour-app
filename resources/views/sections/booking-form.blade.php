@@ -42,7 +42,6 @@
                                             @foreach ($tour->shifts as $shift)
                                                 <option value="{{ $shift->id }}">
                                                     {{ \Carbon\Carbon::parse($shift->start_time)->format('h:i A') }}
-                                                    {{ isset($shift->end_time) ? ' - ' . \Carbon\Carbon::parse($shift->end_time)->format('h:i A') : '' }}
                                                 </option>
                                             @endforeach
                                         </select>

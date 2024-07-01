@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col">
                 <!-- Tour Attributes -->
-                @isset($tour->attributes)
+                @if (count($tour->attributes) > 0)
                     <div class="pb-3">
                         <div class="bg-white mb-3" style="padding: 30px">
                             <div class="tour-attribute pr-0 pr-xl-5">
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                     </div>
-                @endisset
+                @endif
                 <!-- /Tour Attributes -->
 
                 <!-- Tour Detail Start -->

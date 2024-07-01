@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('tour_type', 200)->nullable();
             $table->integer('discount')->nullable();
             $table->enum('discount_type', ['percentage', 'fixed_amount'])->nullable();
-            $table->float('priority', 2)->nullable();
+            $table->float('priority')->nullable();
         });
     }
 

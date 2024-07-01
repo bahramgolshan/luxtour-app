@@ -42,8 +42,7 @@
                                         </small>
                                     </div>
                                     <h5>{{ $item->city }}: {{ $item->title }}</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-                                        enim!</p>
+                                    <p>{{ $item->description }}</p>
                                     <div class="border-top mt-4 pt-4">
                                         <div class="price">
                                             @if (isset($item->discount))

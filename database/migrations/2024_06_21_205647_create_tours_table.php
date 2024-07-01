@@ -22,10 +22,10 @@ return new class extends Migration
             $table->enum('duration_type', Tour::$duration_types);
             $table->date('start_date');
             $table->date('end_date');
-            $table->float('child')->comment('price');
-            $table->float('youth')->comment('price');
-            $table->float('adult')->comment('price');
-            $table->float('senior')->comment('price');
+            $table->float('child')->nullable()->comment('price');
+            $table->float('youth')->nullable()->comment('price');
+            $table->float('adult')->nullable()->comment('price');
+            $table->float('senior')->nullable()->comment('price');
             $table->string('featured_image');
             $table->boolean('is_featured')->default(false)->nullable();
             $table->float('rate')->nullable();
