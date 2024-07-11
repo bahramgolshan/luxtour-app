@@ -35,9 +35,10 @@
                                         <p><strong>Booking Date:</strong>
                                             {{ \Carbon\Carbon::parse($booking->date)->format('M d, Y') }}</p>
                                         <p><strong>Reference:</strong> {{ $booking->reference ?? '' }}</p>
-                                        <p><strong>Name:</strong> {{ $booking->name ?? '' }}</p>
+                                        <p><strong>Name:</strong> {{ $booking->first_name ?? '' }}
+                                            {{ $booking->last_name ?? '' }}</p>
                                         <p><strong>Email:</strong> {{ $booking->email ?? '' }}</p>
-                                        <p><strong>Phone Number:</strong> {{ $booking->phone ?? '' }}</p>
+                                        <p><strong>Phone Number:</strong> {{ $booking->mobile ?? '' }}</p>
                                         <p><strong>Number of Persons:</strong>
                                             @foreach ($booking->only(['child', 'youth', 'adult', 'senior']) as $key => $value)
                                                 @if ($value > 0)

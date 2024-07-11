@@ -1,4 +1,5 @@
-<form id="bookingCheckoutForm" class="p-2" action="{{ route('payment.checkout', ['tour' => $tour]) }}" method="POST">
+<form id="bookingCheckoutForm" class="p-2" action="{{ route('payment.checkout', ['tour' => $tour]) }}" method="POST"
+    onsubmit="showAjaxLoader()">
     @csrf
     <input type="hidden" class="form-control text-center" name="date" value="{{ $bookingData['date'] }}">
     <input type="hidden" class="form-control text-center" name="shift_id" value="{{ $bookingData['shift']->id }}">
@@ -112,7 +113,7 @@
     <div class="form-row">
         <div class="form-group col-md-12">
             <label for="addressInVancouver">Address</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" required>
+            <input type="text" class="form-control" id="addressInVancouver" name="addressInVancouver" required>
         </div>
     </div>
 
@@ -218,17 +219,4 @@
         </button>
         <div id="payment-message" class="hidden"></div>
     </div>
-
-    {{-- <div>
-            <p class="text-muted font-weight-normal mb-0">
-                <small>
-                    At LuxTour, we prioritize your security. When you click "Pay Now" button, you will be redirected to
-                    Stripe's secure payment page. <a href="https://stripe.com">Stripe</a> is trusted by millions of
-                    businesses worldwide for handling
-                    payments securely. Rest assured, your card details are encrypted and protected using
-                    industry-leading security
-                    protocols.
-                </small>
-            </p>
-        </div> --}}
 </form>

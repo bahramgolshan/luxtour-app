@@ -32,7 +32,7 @@ class PaymentController extends Controller
     public function checkout(Tour $tour, Request $request)
     {
         $request->validate([
-            'date' => 'required|date|after_or_equal:now',
+            'date' => 'required|date|after_or_equal:today',
             'shift_id' => 'required|numeric',
             'child' => 'nullable|numeric',
             'youth' => 'nullable|numeric',
@@ -92,11 +92,13 @@ class PaymentController extends Controller
         $booking->date = $bookingInvoice['date'];
         $booking->first_name = $request->get('firstName');
         $booking->last_name = $request->get('lastName');
+        $booking->email = $request->get('email');
         $booking->mobile = $request->get('mobile');
         $booking->mobile_2 = null;
         $booking->country = $request->get('country') ?? '';
         $booking->city = $request->get('city') ?? '';
         $booking->address = $request->get('address') ?? '';
+        $booking->address_in_vancouver = $request->get('addressInVancouver') ?? '';
         $booking->conditions_accepted = $request->get('acceptConditions') == 'on' ? true : false;
         $booking->child = array_key_exists('child', $bookingInvoice['passengers']) ? $bookingInvoice['passengers']['child'] : null;
         $booking->youth = array_key_exists('youth', $bookingInvoice['passengers']) ? $bookingInvoice['passengers']['youth'] : null;

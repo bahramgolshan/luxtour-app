@@ -57,7 +57,14 @@
 
     @include('sections.footer')
 
-
+    <!-- Ajax Loader -->
+    <div id="ajax-loading">
+        <div class="loading-bg">
+            <div class="loading-svg">
+                <div class="spinner-border text-primary"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
@@ -80,6 +87,7 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/ajax-loader.js') }}?v=2"></script>
 
     @stack('after-scripts')
     @if (trim($__env->yieldContent('page-script')))

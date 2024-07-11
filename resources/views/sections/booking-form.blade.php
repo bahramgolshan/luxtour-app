@@ -57,6 +57,15 @@
                     </div>
                 </form>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
     </div>
 </section>
@@ -84,6 +93,7 @@
     <script>
         $(document).ready(function() {
             $('#bookingForm').submit(function(event) {
+                showAjaxLoader()
                 event.preventDefault()
                 const data = $('#bookingForm').serializeArray()
 
@@ -97,6 +107,7 @@
                     url: route,
                     data: data,
                     success: function(response) {
+                        hideAjaxLoader()
                         $('#bookingModal .modal-body').html(response)
                         $('#bookingModal').modal('show')
                     },
