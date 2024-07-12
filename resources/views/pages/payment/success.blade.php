@@ -69,7 +69,8 @@
                                         <div class="row mt-3 mt-lg-0 justify-content-md-center justify-content-lg-start">
                                             <div class="col-md-6 col-lg-4">
                                                 <div class="donwload-pdf w-100">
-                                                    <a class="btn btn-outline-primary w-100" href="#">DOWNLOAD
+                                                    <a class="btn btn-outline-primary w-100"
+                                                        href="{{ route('booking.download', ['session_id' => $booking->session_id]) }}">DOWNLOAD
                                                         VOUCHER</a>
                                                 </div>
                                             </div>

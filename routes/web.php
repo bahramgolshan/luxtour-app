@@ -23,6 +23,7 @@ Route::post('/payment/checkout/{tour}', 'App\Http\Controllers\PaymentController@
 Route::get('/payment/success', 'App\Http\Controllers\PaymentController@success')->name('payment.success');
 Route::get('/payment/cancel', 'App\Http\Controllers\PaymentController@cancel')->name('payment.cancel');
 
+Route::get('/booking/download', 'App\Http\Controllers\BookingController@download')->name('booking.download');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
