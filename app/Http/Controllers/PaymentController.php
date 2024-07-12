@@ -8,6 +8,7 @@ use App\Models\TourShift;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Stripe\Stripe;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -121,16 +122,19 @@ class PaymentController extends Controller
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
         try {
+            // Retreive Session_id from stripe
             $session = \Stripe\Checkout\Session::retrieve($sessionId);
             if (!$session) {
                 throw new NotFoundHttpException();
             }
 
+            // Find booking
             $booking = Booking::where('session_id', $session->id)->first();
             if (!$booking) {
                 throw new NotFoundHttpException();
             }
 
+            // Modify booking if Unpaid
             if ($booking->status === 'unpaid') {
                 $booking->status = $session->payment_status;
                 $booking->mobile_2 = $session->customer_details->phone ?? null;
@@ -140,7 +144,18 @@ class PaymentController extends Controller
                 $booking->save();
             }
 
-            return view('pages.payment.success', compact('booking'));
+            // Generate QrCode
+            $route = route('payment.success') . '?session_id=' . $session->id;
+            $image = QrCode::format('png')
+                ->size(200)
+                ->color(33, 33, 33)
+                // ->backgroundColor(245, 66, 75)
+                ->margin(1)
+                // ->merge('https://www.seeklogo.net/wp-content/uploads/2016/09/facebook-icon-preview-1.png', .5, true)
+                ->generate($route);
+
+            // Return Success page
+            return view('pages.payment.success', compact('booking', 'image'));
         } catch (\Exception $e) {
             throw new NotFoundHttpException();
         }
