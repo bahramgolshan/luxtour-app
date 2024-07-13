@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BookingEmail;
 use App\Models\Booking;
+use App\Models\Setting;
 use App\Models\Tour;
 use App\Models\TourShift;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Stripe\Stripe;
@@ -64,7 +67,8 @@ class PaymentController extends Controller
                 'price_data' => [
                     'currency' => config('app.currency.unit'),
                     'product_data' => [
-                        'name' => __('tour.' . $age . '.title') . ' ' . __('tour.' . $age . '.ageRange'),
+                        // 'name' => __('tour.' . $age . '.title') . ' ' . __('tour.' . $age . '.ageRange'),
+                        'name' => __('tour.' . $age . '.title'),
                     ],
                     'unit_amount' => $unitAmount * 100,
                 ],
@@ -134,16 +138,6 @@ class PaymentController extends Controller
                 throw new NotFoundHttpException();
             }
 
-            // Modify booking if Unpaid
-            if ($booking->status === 'unpaid') {
-                $booking->status = $session->payment_status;
-                $booking->mobile_2 = $session->customer_details->phone ?? null;
-                $booking->amount_tax = $session->total_details->amount_tax / 100 ?? null;
-                $booking->amount_total = $session->amount_total / 100 ?? null;
-                $booking->currency = $session->currency ?? null;
-                $booking->save();
-            }
-
             // Generate QrCode
             $route = route('payment.success') . '?session_id=' . $session->id;
             $image = QrCode::format('png')
@@ -154,8 +148,28 @@ class PaymentController extends Controller
                 // ->merge('https://www.seeklogo.net/wp-content/uploads/2016/09/facebook-icon-preview-1.png', .5, true)
                 ->generate($route);
 
+            // Modify booking if Unpaid
+            if ($booking->status === 'unpaid') {
+                $booking->status = $session->payment_status;
+                $booking->mobile_2 = $session->customer_details->phone ?? null;
+                $booking->amount_tax = $session->total_details->amount_tax / 100 ?? null;
+                $booking->amount_total = $session->amount_total / 100 ?? null;
+                $booking->currency = $session->currency ?? null;
+                $booking->save();
+
+                // Notify customer and admin via Email
+                Mail::to($booking->email)
+                    ->cc(Setting::where('key', 'adminEmail')->first()->value)
+                    ->send(new BookingEmail($booking, $route));
+            }
+
+            // Get Setting Information
+            $settings = $settings = Setting::where('key', 'email')
+                ->orWhere('key', 'phone')
+                ->pluck('value', 'key');
+
             // Return Success page
-            return view('pages.payment.success', compact('booking', 'image'));
+            return view('pages.payment.success', compact('booking', 'image', 'settings'));
         } catch (\Exception $e) {
             throw new NotFoundHttpException();
         }

@@ -22,6 +22,7 @@ class SettingSeeder extends Seeder
             ['facebook', '#'],
             ['twitter', '#'],
             ['youtube', '#'],
+            ['adminEmail', 'fastbuyinc22@gmail.com'],
         ];
 
         foreach ($data as $item) {

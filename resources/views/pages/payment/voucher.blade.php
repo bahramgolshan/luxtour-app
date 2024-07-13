@@ -54,6 +54,10 @@
         margin-right: 10px
     }
 
+    .mt-10 {
+        margin-top: 10px;
+    }
+
     .header {
         position: relative
     }
@@ -64,6 +68,13 @@
 
     .qr-code {
         margin: 10px;
+    }
+
+    .important-info {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-left: 5px solid #3D3A71;
+        margin-bottom: 20px;
     }
 </style>
 
@@ -94,9 +105,11 @@
             <img class="w-100" src="data:image/png;base64, {!! base64_encode($image) !!}" alt="booking voucher qrcode">
         </div>
         <p><strong>Tour Package:</strong> {{ $booking->tour->title }}</p>
-        <p><strong>Booking Date:</strong>
+        <p><strong>Pickup Date:</strong>
             {{ \Carbon\Carbon::parse($booking->date)->format('M d, Y') }}</p>
-        <p><strong>Reference:</strong> {{ $booking->reference ?? '' }}</p>
+        <p><strong>Pickup Time:</strong>
+            {{ \Carbon\Carbon::parse($booking->tourShift->start_time)->format('h:i A') }}</p>
+        <p><strong>Booking Reference:</strong> {{ $booking->reference ?? '' }}</p>
         <p><strong>Name:</strong> {{ $booking->first_name ?? '' }}
             {{ $booking->last_name ?? '' }}</p>
         <p><strong>Email:</strong> {{ $booking->email ?? '' }}</p>
@@ -117,6 +130,18 @@
         <p><strong>Notes:</strong> Lorem ipsum dolor sit amet consectetur
             adipisicing elit.
             Rem, odio.</p>
+    </div>
+
+    <div class="important-info mt-10">
+        <p><strong>Important Information:</strong></p>
+        <ul>
+            <li>Please arrive at the pickup location at least 15 minutes before the scheduled pickup time.</li>
+            <li>Bring a copy of this confirmation email with you.</li>
+            <li>If you have any special requests or need assistance, don’t hesitate to contact us at <a
+                    href="mailto:{{ $settings['email'] }}">{{ $settings['email'] }}</a> or
+                {{ $settings['phone'] }}.
+            </li>
+        </ul>
     </div>
 
     <div class="text-center">

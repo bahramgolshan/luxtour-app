@@ -34,9 +34,13 @@
                                             <div class="col-lg-9">
                                                 <div class="ticket-info">
                                                     <p><strong>Tour Package:</strong> {{ $booking->tour->title }}</p>
-                                                    <p><strong>Booking Date:</strong>
+                                                    <p><strong>Pickup Date:</strong>
                                                         {{ \Carbon\Carbon::parse($booking->date)->format('M d, Y') }}</p>
-                                                    <p><strong>Reference:</strong> {{ $booking->reference ?? '' }}</p>
+                                                    <p><strong>Pickup Time:</strong>
+                                                        {{ \Carbon\Carbon::parse($booking->tourShift->start_time)->format('h:i A') }}
+                                                    </p>
+                                                    <p><strong>Booking Reference:</strong> {{ $booking->reference ?? '' }}
+                                                    </p>
                                                     <p><strong>Name:</strong> {{ $booking->first_name ?? '' }}
                                                         {{ $booking->last_name ?? '' }}</p>
                                                     <p><strong>Email:</strong> {{ $booking->email ?? '' }}</p>
@@ -54,9 +58,6 @@
                                                         ${{ number_format($booking->amount_tax, 2, '.', '') }}</p>
                                                     <p><strong>Total Amount Paid:</strong>
                                                         ${{ number_format($booking->amount_total, 2, '.', '') }}</p>
-                                                    <p><strong>Notes:</strong> Lorem ipsum dolor sit amet consectetur
-                                                        adipisicing elit.
-                                                        Rem, odio.</p>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 d-flex flex-column align-items-center">
