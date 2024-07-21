@@ -30,7 +30,7 @@ class BookingEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('reservation@luxtour.com', 'Reservation | LuxTour'),
+            from: new Address(env('MAIL_FROM_NAME_RESERVATION', 'reservation@luxtour.ca'), 'Reservation | LuxTour'),
             subject: 'Booking Confirmation Email | LuxTour',
         );
     }
@@ -41,7 +41,7 @@ class BookingEmail extends Mailable
     public function content(): Content
     {
         // Get Setting Information
-        $settings = $settings = Setting::where('key', 'email')
+        $settings = $settings = Setting::where('key', 'emailReservation')
             ->orWhere('key', 'phone')
             ->pluck('value', 'key');
 

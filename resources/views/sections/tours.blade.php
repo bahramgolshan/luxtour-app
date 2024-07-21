@@ -14,7 +14,7 @@
                         <div class="package-item bg-white mb-2 position-relative">
                             <a href={{ route('tour.show', ['tour' => $item]) }} class="text-dark">
                                 <img class="package-item_img img-fluid"
-                                    src="{{ asset('assets/images/tours/' . $item->featured_image) }}"
+                                    src="{{ asset('assets/images/' . $item->featured_image) }}"
                                     alt="image for {{ $item->title }}" />
                                 <div class="position-absolute d-flex flex-column" style="top: 15px; left:0">
                                     @isset($item->discount)

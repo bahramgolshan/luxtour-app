@@ -6,7 +6,7 @@
                 @foreach ($images as $index => $item)
                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
                         <img class="img-cover" src="{{ asset('assets/images/' . $item->image) }}" alt="Image" />
-                        <div class="carousel-captionn d-flex flex-column align-items-center justify-content-center">
+                        {{-- <div class="carousel-captionn d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 900px">
                                 <h4 class="text-white text-uppercase mb-md-3">
                                     {{ $item->title }}
@@ -19,7 +19,7 @@
                                         class="btn btn-primary py-md-3 px-md-5 mt-2">{{ $item->action_button_lable }}</a>
                                 @endisset
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 @endforeach
             </div>

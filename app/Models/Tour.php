@@ -22,6 +22,6 @@ class Tour extends Model
     }
     public function shifts()
     {
-        return $this->hasMany(TourShift::class, 'tour_id');
+        return $this->hasMany(TourShift::class, 'tour_id')->orderBy('start_time');
     }
 }

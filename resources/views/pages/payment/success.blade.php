@@ -45,19 +45,24 @@
                                                         {{ $booking->last_name ?? '' }}</p>
                                                     <p><strong>Email:</strong> {{ $booking->email ?? '' }}</p>
                                                     <p><strong>Phone Number:</strong> {{ $booking->mobile ?? '' }}</p>
-                                                    <p><strong>Number of Persons:</strong>
+                                                    <p><strong>Number of Passengers:</strong>
                                                         @foreach ($booking->only(['child', 'youth', 'adult', 'senior']) as $key => $value)
                                                             @if ($value > 0)
                                                                 <span> {{ $value . ' ' . ucfirst($key) }},</span>
                                                             @endif
                                                         @endforeach
                                                     </p>
-                                                    <p><strong>Total Amount:</strong>
+                                                    <p><strong>Subtotal:</strong>
                                                         ${{ number_format($booking->amount_subtotal, 2, '.', '') }}</p>
-                                                    <p><strong>Tax Amount:</strong>
+                                                    <p><strong>Discount:</strong>
+                                                        ${{ number_format($booking->amount_discount, 2, '.', '') }}</p>
+                                                    <p><strong>Tax:</strong>
                                                         ${{ number_format($booking->amount_tax, 2, '.', '') }}</p>
-                                                    <p><strong>Total Amount Paid:</strong>
+                                                    <p><strong>Total Paid:</strong>
                                                         ${{ number_format($booking->amount_total, 2, '.', '') }}</p>
+                                                    <p><strong>Important Note:</strong>
+                                                        Please download your voucher and bring
+                                                        it with you on pickup.</p>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 d-flex flex-column align-items-center">
@@ -70,7 +75,7 @@
                                         <div class="row mt-3 mt-lg-0 justify-content-md-center justify-content-lg-start">
                                             <div class="col-md-6 col-lg-4">
                                                 <div class="donwload-pdf w-100">
-                                                    <a class="btn btn-outline-primary w-100"
+                                                    <a class="btn btn-primary w-100"
                                                         href="{{ route('booking.download', ['session_id' => $booking->session_id]) }}">DOWNLOAD
                                                         VOUCHER</a>
                                                 </div>

@@ -52,10 +52,10 @@
             display: inline-block;
             padding: 10px 15px;
             font-size: 16px;
-            color: #fff;
             background-color: #3D3A71;
             text-decoration: none;
             border-radius: 5px;
+            color: #ffffff;
         }
 
         .footer {
@@ -102,20 +102,22 @@
                 <li>Please arrive at the pickup location at least 15 minutes before the scheduled pickup time.</li>
                 <li>Bring a copy of this confirmation email with you.</li>
                 <li>If you have any special requests or need assistance, don’t hesitate to contact us at <a
-                        href="mailto:{{ $settings['email'] }}">{{ $settings['email'] }}</a> or
+                        href="mailto:{{ $settings['emailReservation'] }}">{{ $settings['emailReservation'] }}</a> or
                     {{ $settings['phone'] }}.
                 </li>
             </ul>
         </div>
 
-        <p><strong>For more information or to see your booking, please visit:</strong></p>
-        <a href="{{ $route }}" class="button">Check Your Booking</a>
+        <p><strong>For more information or to see your booking, please click the button below:</strong></p>
+        <a href="{{ $route }}" class="button" style="text-decoration:none; color: white">Check Your Booking</a>
+
+        <p>or visit: <a href="{{ $route }}" target="_blank">{{ $route }}</a></p>
 
         <p>We appreciate you choosing {{ env('APP_NAME') }} for your travel experience. If you have any questions or
             need
             to make changes to your booking, feel free to reach out to us.</p>
 
-        <p>Safe travels and see you soon!</p>
+        <p>Safe trip and see you soon!</p>
 
         <div class="footer">
             <p>Best regards,</p>
@@ -123,7 +125,7 @@
             <p>
                 <strong>{{ env('APP_NAME') }}</strong><br>
                 {{ $settings['phone'] }}<br>
-                <a href="mailto:{{ $settings['email'] }}">{{ $settings['email'] }}</a><br>
+                <a href="mailto:{{ $settings['emailReservation'] }}">{{ $settings['emailReservation'] }}</a><br>
                 <a href="{{ env('APP_URL') }}">{{ env('APP_URL') }}</a>
             </p>
         </div>

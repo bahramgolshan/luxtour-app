@@ -39,7 +39,7 @@ class BookingController extends Controller
                 ->generate($route);
 
             // Get Setting Information
-            $settings = $settings = Setting::where('key', 'email')
+            $settings = $settings = Setting::where('key', 'emailReservation')
                 ->orWhere('key', 'phone')
                 ->pluck('value', 'key');
 
