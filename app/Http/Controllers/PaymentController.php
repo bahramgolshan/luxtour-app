@@ -73,6 +73,7 @@ class PaymentController extends Controller
                     'unit_amount' => $unitAmount * 100,
                 ],
                 'quantity' => $quantity,
+                'tax_rates' => [env('STRIPE_TAX_RATE_ID')],
             ];
         }
 
@@ -81,7 +82,7 @@ class PaymentController extends Controller
         $checkout_session = \Stripe\Checkout\Session::create([
             'line_items' => $lineItems,
             'mode' => 'payment',
-            'automatic_tax' => ['enabled' => true],
+            // 'automatic_tax' => ['enabled' => false],
             'phone_number_collection' => ['enabled' => true],
             'success_url' => route('payment.success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
             'cancel_url' => route('payment.cancel', [], true),
@@ -159,7 +160,7 @@ class PaymentController extends Controller
 
                 // Notify customer and admin via Email
                 Mail::to($booking->email)
-                    ->cc(Setting::where('key', 'adminEmail')->first()->value)
+                    ->cc(Setting::where('key', 'emailAdmin')->first()->value)
                     ->send(new BookingEmail($booking, $route));
             }
 
