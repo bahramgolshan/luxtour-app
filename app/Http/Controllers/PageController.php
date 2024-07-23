@@ -19,4 +19,9 @@ class PageController extends Controller
             'testimonials' => $testimonials,
         ]);
     }
+
+    public function terms()
+    {
+        return view('pages.static.terms-and-conditions');
+    }
 }
