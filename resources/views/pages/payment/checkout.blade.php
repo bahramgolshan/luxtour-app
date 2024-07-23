@@ -127,7 +127,8 @@
                 <input class="form-check-input me-2" type="checkbox" id="conditions" name="acceptConditions"
                     required />
                 <label class="form-check-label" for="conditions">
-                    I have read and agree to the <a href="https://#" target="_blank">terms and conditions</a> above
+                    I have read and agree to the <a href="{{ route('terms') }}" target="_blank">terms and
+                        conditions</a> above
                 </label>
             </div>
         </div>

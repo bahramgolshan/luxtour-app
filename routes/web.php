@@ -14,7 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function () {
+    return view('test');
+})->name('home');
+
 Route::get('/', 'App\Http\Controllers\PageController@home')->name('home');
+Route::get('/terms-and-conditions', 'App\Http\Controllers\PageController@terms')->name('terms');
+
 Route::get('/tour/{tour}', 'App\Http\Controllers\TourController@show')->name('tour.show');
 Route::get('/tour/checkout/{id}', 'App\Http\Controllers\TourController@checkout')->where('id', '[0-9]+')->name('tour.checkout-form');
 

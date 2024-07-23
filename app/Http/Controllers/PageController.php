@@ -11,7 +11,7 @@ class PageController extends Controller
 {
     public function home()
     {
-        $tours = Tour::where('end_date', '>=', now())->orderBy('priority', 'ASC')->get();
+        $tours = Tour::where('is_featured', true)->where('end_date', '>=', now())->orderBy('priority', 'ASC')->get();
         $testimonials = Testimonial::where('is_featured', true)->get();
 
         return view('home', [

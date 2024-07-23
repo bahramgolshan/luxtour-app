@@ -40,6 +40,8 @@
                             class="fa fa-angle-right mr-2"></i>Packages</a>
                     <a class="text-white-50 mb-2" href="{{ route('home') . '/#testimonial' }}"><i
                             class="fa fa-angle-right mr-2"></i>Testimonial</a>
+                    <a class="text-white-50 mb-2" href="{{ route('terms') . '/#testimonial' }}"><i
+                            class="fa fa-angle-right mr-2"></i>Terms and Conditions</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
