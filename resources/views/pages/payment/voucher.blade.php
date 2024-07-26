@@ -138,9 +138,9 @@
         <ul>
             <li>Please arrive at the pickup location at least 15 minutes before the scheduled pickup time.</li>
             <li>Bring a copy of this confirmation email with you.</li>
-            <li>If you have any special requests or need assistance, don’t hesitate to contact us at <a
-                    href="mailto:{{ $settings['emailReservation'] }}">{{ $settings['emailReservation'] }}</a> or
-                <a aria-label="Chat on WhatsApp" target="_blank"
+            <li>If you have any special requests or need assistance, feel free to email us at <a
+                    href="mailto:{{ $settings['emailReservation'] }}">{{ $settings['emailReservation'] }}</a> or text
+                us on WhatsApp at <a aria-label="Chat on WhatsApp" target="_blank"
                     href="https://wa.me/14373130022">{{ $settings['phone'] }}</a>.
             </li>
         </ul>

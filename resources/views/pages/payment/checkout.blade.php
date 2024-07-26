@@ -109,13 +109,13 @@
         </div>
     </div>
 
-    <h5 class="h4 pb-2 pt-4 border-bottom">Information Of Stay in Vancouver</h5>
+    {{-- <h5 class="h4 pb-2 pt-4 border-bottom">Information Of Stay in Vancouver</h5>
     <div class="form-row">
         <div class="form-group col-md-12">
             <label for="addressInVancouver">Address</label>
             <input type="text" class="form-control" id="addressInVancouver" name="addressInVancouver">
         </div>
-    </div>
+    </div> --}}
 
     <div class="overflow-auto mt-2 mb-4" style="background-color: lightgrey;height: 200px;">
         @include('sections.terms-and-conditions')
